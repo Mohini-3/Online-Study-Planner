@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study Planner - Academic Excellence Hub</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+        
+        frameset {
+            border: none;
+            frameborder: 0;
+            framespacing: 0;
+        }
+        
+        frame {
+            border: none;
+            frameborder: 0;
+        }
+    </style>
+</head>
+
+<!-- Modern frame layout with proper proportions -->
+<frameset rows="140,*" frameborder="0" framespacing="0">
+    <frame src="top.html" name="topFrame" scrolling="no" noresize marginheight="0" marginwidth="0">
+
+    <frameset cols="280,*" frameborder="0" framespacing="0">
+        <frame src="left.html" name="leftFrame" scrolling="auto" noresize marginheight="0" marginwidth="0">
+        <frame src="right.html" name="rightFrame" scrolling="auto" marginheight="0" marginwidth="0">
+    </frameset>
+</frameset>
+
+</html>

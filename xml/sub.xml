@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE subjects [
+    <!ELEMENT subjects (subject+)>
+    <!ELEMENT subject (name, difficulty, image)>
+    <!ATTLIST subject id CDATA #REQUIRED>
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT difficulty (#PCDATA)>
+    <!ELEMENT image (#PCDATA)>
+]>
+
+<subjects>
+    <subject id="1">
+        <name>Mathematics</name>
+        <difficulty>Medium</difficulty>
+        <image>math.png</image>
+    </subject>
+
+    <subject id="2">
+        <name>Science</name>
+        <difficulty>Medium</difficulty>
+        <image>science.png</image>
+    </subject>
+
+    <subject id="3">
+        <name>English</name>
+        <difficulty>Easy</difficulty>
+        <image>english.png</image>
+    </subject>
+
+    <subject id="4">
+        <name>Computer Science</name>
+        <difficulty>Hard</difficulty>
+        <image>cs.png</image>
+    </subject>
+</subjects>

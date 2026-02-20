@@ -1,0 +1,62 @@
+/* Premium Lists */
+ul {
+  list-style: none;
+  padding: 0;
+  max-width: 1000px;
+  margin: 32px auto;
+  display: grid;
+  gap: 16px;
+}
+
+ul li {
+  background: var(--bg-primary);
+  padding: 20px 28px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-size: 1.05rem;
+  border: 1px solid var(--border-light);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+ul li::before {
+  content: '✨';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+ul li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  transition: width 0.3s ease;
+}
+
+ul li {
+  padding-left: 56px;
+}
+
+ul li:hover {
+  transform: translateX(8px) translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+ul li:hover::after {
+  width: 100%;
+  opacity: 0.1;
+}
+
+ul li:hover::before {
+  transform: translateY(-50%) rotate(360deg);
+  opacity: 1;
+}

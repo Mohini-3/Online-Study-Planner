@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Left Menu</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f8fafc 100%);
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    padding: 24px 0;
+    border-right: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.sidebar {
+    padding: 0 16px;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-item {
+    margin-bottom: 8px;
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    color: #475569;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.8);
+    margin-bottom: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.menu-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, #6366f1, #8b5cf6);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    border-radius: 0 2px 2px 0;
+}
+
+.menu-icon {
+    margin-right: 12px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: 8px;
+    position: relative;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+.menu-link:hover {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1e293b;
+    border-color: rgba(99, 102, 241, 0.2);
+    transform: translateX(4px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+}
+
+.menu-link:hover::before {
+    transform: scaleY(1);
+}
+
+.menu-link:hover .menu-icon {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.menu-link:active {
+    background: rgba(239, 246, 255, 0.9);
+    color: #1e40af;
+    border-color: #6366f1;
+}
+
+/* Professional gradient icons for each menu item */
+.menu-icon::after {
+    content: '';
+    position: absolute;
+}
+
+.menu-item:nth-child(1) .menu-icon::after {
+    width: 12px;
+    height: 9px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 2px;
+    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.8), 0 4px 0 rgba(255, 255, 255, 0.6);
+}
+
+.menu-item:nth-child(2) .menu-icon::after {
+    width: 12px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 2px;
+}
+
+.menu-item:nth-child(2) .menu-icon::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.7);
+    top: 11px;
+    left: 10px;
+    border-radius: 1px;
+    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.7);
+}
+
+.menu-item:nth-child(3) .menu-icon::after {
+    width: 2px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 1px;
+    box-shadow: 3px 2px 0 rgba(255, 255, 255, 0.8), 6px 4px 0 rgba(255, 255, 255, 0.6), 9px 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.menu-item:nth-child(4) .menu-icon::after {
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    background: transparent;
+}
+
+.menu-item:nth-child(4) .menu-icon::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.95);
+    top: 13px;
+    left: 11px;
+    box-shadow: 0 -3px 0 rgba(255, 255, 255, 0.95);
+}
+
+.menu-item:nth-child(5) .menu-icon::after {
+    width: 10px;
+    height: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    background: transparent;
+}
+
+.menu-item:nth-child(5) .menu-icon::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    top: 12px;
+    left: 12px;
+}
+
+.menu-item:nth-child(6) .menu-icon::after {
+    width: 10px;
+    height: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    background: transparent;
+}
+
+.menu-item:nth-child(6) .menu-icon::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    top: 12px;
+    left: 12px;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.menu-item:nth-child(7) .menu-icon::after {
+    width: 12px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 2px;
+}
+
+.menu-item:nth-child(7) .menu-icon::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 1px;
+    background: rgba(99, 102, 241, 0.8);
+    top: 12px;
+    left: 10px;
+    border-radius: 1px;
+    box-shadow: 0 2px 0 rgba(99, 102, 241, 0.8), 0 4px 0 rgba(99, 102, 241, 0.8);
+}
+
+/* Professional responsive design with enhanced visual appeal */
+@media (max-width: 768px) {
+    body {
+        padding: 16px 0;
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f8fafc 100%);
+    }
+    
+    .sidebar {
+        padding: 0 12px;
+    }
+    
+    .menu-link {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+    }
+    
+    .menu-icon {
+        width: 26px;
+        height: 26px;
+        margin-right: 10px;
+    }
+}
+
+/* Add subtle entrance animations for better user experience */
+.menu-item {
+    animation: slideUp 0.3s ease-out forwards;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.menu-item:nth-child(1) { animation-delay: 0.1s; }
+.menu-item:nth-child(2) { animation-delay: 0.15s; }
+.menu-item:nth-child(3) { animation-delay: 0.2s; }
+.menu-item:nth-child(4) { animation-delay: 0.25s; }
+.menu-item:nth-child(5) { animation-delay: 0.3s; }
+.menu-item:nth-child(6) { animation-delay: 0.35s; }
+.menu-item:nth-child(7) { animation-delay: 0.4s; }
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Additional glassmorphism effect for premium look */
+.sidebar {
+    position: relative;
+}
+
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: -24px;
+    left: -16px;
+    right: -16px;
+    bottom: -24px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px);
+    pointer-events: none;
+    z-index: -1;
+    border-radius: 0 12px 12px 0;
+}
+</style>
+</head>
+
+<body>
+<div class="sidebar">
+    <ul class="menu-list">
+        <li class="menu-item">
+            <a href="subjects.html" target="rightFrame" class="menu-link">
+                <span class="menu-icon"></span>
+                Subjects
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="today.html" target="rightFrame" class="menu-link">
+                <span class="menu-icon"></span>
+                Today's Tasks
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="weeklyplan.html" target="rightFrame" class="menu-link">
+                <span class="menu-icon"></span>
+                Weekly Plan
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="timetable.html" target="rightFrame" class="menu-link">
+                <span class="menu-icon"></span>
+                Timetable
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="studytips.html" target="rightFrame" class="menu-link">
+                <span class="menu-icon"></span>
+                Study Tips
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="goals.html" target="rightFrame" class="menu-link">
+                <span class="menu-icon"></span>
+                Goals
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="exams.html" target="rightFrame" class="menu-link">
+                <span class="menu-icon"></span>
+                Exam Tracker
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>

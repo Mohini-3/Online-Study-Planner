@@ -1,0 +1,98 @@
+/* Modern Premium Header */
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  margin: 0;
+  padding: 24px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+table { 
+  border-collapse: collapse; 
+  width: 100%; 
+  position: relative;
+  z-index: 10;
+}
+
+/* Premium Header */
+table tr:first-child td h1 {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 2.2rem;
+  letter-spacing: -0.04em;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  margin: 0;
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+table tr:first-child td img {
+  border-radius: 50%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  border: 4px solid rgba(255,255,255,0.2);
+  max-height: 90px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+table tr:first-child td img:hover {
+  transform: scale(1.05);
+}
+
+/* Premium Navigation */
+table tr:nth-child(2) td { 
+  padding: 28px 0 0; 
+}
+
+table tr:nth-child(2) a {
+  color: #ffffff;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  margin: 0 6px;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+table tr:nth-child(2) a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 50px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+table tr:nth-child(2) a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  color: #ffffff;
+}
+
+table tr:nth-child(2) a:hover::before {
+  opacity: 1;
+}

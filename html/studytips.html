@@ -1,0 +1,312 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Tips</title>
+
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/content.css">
+<link rel="stylesheet" href="css/lists.css">
+
+<script>
+function changeBgColor() {
+    const container = document.getElementById("container");
+    const colors = [
+        'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+        'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+        'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+    ];
+    
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    container.style.background = randomColor;
+    
+    // Add a success message
+    const button = document.querySelector('.btn-primary');
+    const originalText = button.innerHTML;
+    button.innerHTML = '✨ Amazing Choice!';
+    button.style.transform = 'scale(1.1)';
+    
+    setTimeout(() => {
+        button.innerHTML = originalText;
+        button.style.transform = 'scale(1)';
+    }, 2000);
+}
+</script>
+
+</head>
+
+<body>
+
+<div id="container" class="tips-container">
+    <div class="tips-hero">
+        <h1>Study Tips & Strategies</h1>
+        <p>Proven techniques to maximize your learning potential and academic success</p>
+    </div>
+    
+    <div class="tips-grid">
+        <div class="tip-card">
+            <div class="tip-icon">📅</div>
+            <h3>Create a Schedule</h3>
+            <p>Make a clear, realistic study schedule that fits your lifestyle and stick to it consistently.</p>
+        </div>
+        
+        <div class="tip-card">
+            <div class="tip-icon">⏰</div>
+            <h3>Take Regular Breaks</h3>
+            <p>Use the Pomodoro technique: study for 25-45 minutes, then take 5-15 minute breaks to maintain focus.</p>
+        </div>
+        
+        <div class="tip-card">
+            <div class="tip-icon">🔄</div>
+            <h3>Daily Revision</h3>
+            <p>Review material daily for better memory retention. Consistent revision beats cramming every time.</p>
+        </div>
+        
+        <div class="tip-card">
+            <div class="tip-icon">📄</div>
+            <h3>Practice Past Papers</h3>
+            <p>Solve previous year exam papers to understand patterns, improve time management, and boost confidence.</p>
+        </div>
+        
+        <div class="tip-card">
+            <div class="tip-icon">🎯</div>
+            <h3>Minimize Distractions</h3>
+            <p>Create a dedicated, organized study space free from social media, noise, and other distractions.</p>
+        </div>
+        
+        <div class="tip-card">
+            <div class="tip-icon">🧠</div>
+            <h3>Active Learning</h3>
+            <p>Engage with material through summarizing, teaching others, making flashcards, and asking questions.</p>
+        </div>
+    </div>
+    
+    <div class="pro-tips">
+        <h2>Pro Tips for Success</h2>
+        <div class="pro-tip-list">
+            <div class="pro-tip">
+                <span class="tip-number">01</span>
+                <div class="tip-content">
+                    <h4>Use Multiple Learning Styles</h4>
+                    <p>Combine visual, auditory, and kinesthetic learning methods to reinforce concepts.</p>
+                </div>
+            </div>
+            <div class="pro-tip">
+                <span class="tip-number">02</span>
+                <div class="tip-content">
+                    <h4>Set SMART Goals</h4>
+                    <p>Make your study goals Specific, Measurable, Achievable, Relevant, and Time-bound.</p>
+                </div>
+            </div>
+            <div class="pro-tip">
+                <span class="tip-number">03</span>
+                <div class="tip-content">
+                    <h4>Get Quality Sleep</h4>
+                    <p>Aim for 7-9 hours of sleep. Your brain consolidates memories during rest.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cta-section">
+        <button class="btn-primary" onclick="changeBgColor()">Unlock Your Potential</button>
+    </div>
+</div>
+
+<style>
+.tips-container {
+    min-height: 100vh;
+    padding: 40px 20px;
+    transition: background-color 0.5s ease;
+}
+
+.tips-hero {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.tips-hero h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #111827;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #6366f1, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tips-hero p {
+    font-size: 1.2rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tip-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.tip-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #6366f1, #10b981);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.tip-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.tip-card:hover::before {
+    transform: scaleX(1);
+}
+
+.tip-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.tip-card h3 {
+    color: #111827;
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.tip-card p {
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.pro-tips {
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.pro-tips h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 40px;
+}
+
+.pro-tip-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.pro-tip {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+}
+
+.pro-tip:hover {
+    transform: translateX(8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tip-number {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #ffffff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.tip-content h4 {
+    color: #111827;
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.tip-content p {
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.cta-section {
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #ffffff;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(245, 158, 11, 0.6);
+}
+
+@media (max-width: 768px) {
+    .tips-hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .pro-tip {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .tip-number {
+        margin-right: 0;
+        margin-bottom: 16px;
+    }
+}
+</style>
+
+</body>
+</html>

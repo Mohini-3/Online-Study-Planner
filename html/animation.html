@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Animation</title>
+
+    <style>
+        #img {
+            position: relative;
+            left: 0px;
+        }
+    </style>
+
+    <script>
+        let pos = 0;
+        let intervalId;
+
+        function startAnimation() {
+            intervalId = setInterval(function () {
+                if (pos >= 300) {
+                    pos = 0;   // reset position
+                }
+                pos += 2;
+                document.getElementById("img").style.left = pos + "px";
+            }, 20);
+        }
+
+        function stopAnimation() {
+            clearInterval(intervalId);
+        }
+    </script>
+</head>
+
+<body>
+
+    <img id="img"
+         src="C:\Users\HP\Documents\Web application\image.png"
+         width="300"
+         height="200">
+
+    <p>Click the start button to start animation</p>
+
+    <button onclick="startAnimation()">Start</button>
+    <button onclick="stopAnimation()">Stop</button>
+
+</body>
+</html>

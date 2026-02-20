@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Tasks</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/content.css">
+    <link rel="stylesheet" href="css/tables.css">
+
+    <script>
+        function showDateTime() {
+            var now = new Date();
+            document.getElementById("datetime").innerHTML = now;
+        }
+    </script>
+</head>
+
+<body onload="showDateTime()">
+
+    <h1>TODAY'S TASKS</h1>
+
+    <p id="datetime" style="font-weight:bold;"></p>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Subject</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>Solve Algebra Problems</td>
+                <td>Math</td>
+                <td><span class="pending">Pending</span></td>
+            </tr>
+            <tr>
+                <td>Read Chapter 2</td>
+                <td>Science</td>
+                <td><span class="completed">Completed</span></td>
+            </tr>
+            <tr>
+                <td>Write Essay</td>
+                <td>English</td>
+                <td><span class="pending">Pending</span></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

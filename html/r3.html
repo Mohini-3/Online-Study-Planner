@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function liveDOB(){
+  let v=document.getElementById("dob").value;
+  document.getElementById("dobErr").textContent=isNaN(new Date(v).getTime())?"Invalid date":"";
+}
+function livePost(){
+  let v=document.getElementById("postal").value;
+  document.getElementById("postErr").textContent=/^[0-9]{6}$/.test(v)?"":"Must be 6 digits";
+}
+function go(){
+  let d=document.getElementById("dob").value;
+  let p=document.getElementById("postal").value;
+  if(!isNaN(new Date(d).getTime()) && /^[0-9]{6}$/.test(p))
+  document.getElementById("okMsg").textContent="Registration Successful!";
+  return false;
+}
+</script>
+</head>
+
+<body style="margin:0;height:100vh;background:#f8f9fa;display:flex;justify-content:center;align-items:center;font-family:Inter,sans-serif;">
+<form onsubmit="return go()">
+<div style="background:white;padding:30px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);width:320px;text-align:center;border:1px solid #e5e7eb;">
+<h3 style="color:#1a2332;font-weight:600;margin-bottom:20px;">Registration Form</h3>
+
+DOB: <input type="date" id="dob" oninput="liveDOB()" style="width:70%;padding:8px;border:1px solid #d1d5db;border-radius:4px;margin:8px;">
+<br><div id="dobErr" style="color:#ef4444;font-size:12px;height:16px;margin-top:4px;"></div><br>
+
+Postal: <input id="postal" oninput="livePost()" style="width:70%;padding:8px;border:1px solid #d1d5db;border-radius:4px;margin:8px;">
+<br><div id="postErr" style="color:#ef4444;font-size:12px;height:16px;margin-top:4px;"></div><br>
+
+<input type="submit" value="Submit" style="background:#3b82f6;color:white;padding:10px 20px;border:none;border-radius:6px;cursor:pointer;font-weight:600;"><br><br>
+<div id="okMsg" style="color:#10b981;font-size:13px;"></div>
+
+</div>
+</form>
+</body>
+</html>

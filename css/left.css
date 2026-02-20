@@ -1,0 +1,86 @@
+/* Modern Elegant Sidebar */
+.sidebar {
+  float: left;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  padding: 32px 0;
+}
+
+body {
+  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+}
+
+table {
+  background: transparent;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tr td {
+  padding: 4px 24px !important;
+}
+
+/* Modern Sidebar Links */
+table a {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  color: var(--text-primary);
+  font-weight: 600;
+  border-radius: var(--radius);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  font-size: 0.95rem;
+  margin: 4px 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+table a::before {
+  content: '▶';
+  margin-right: 12px;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+table a:hover {
+  background: var(--bg-primary);
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateX(8px);
+  box-shadow: var(--shadow-lg);
+}
+
+table a:hover::before {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* Active state with gradient */
+table a:active {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #ffffff;
+  border-color: transparent;
+}
+
+table a:active::before {
+  color: #ffffff;
+}

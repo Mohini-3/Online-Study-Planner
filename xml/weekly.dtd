@@ -1,0 +1,8 @@
+<!ELEMENT weeklyStudyPlan (day+)>
+<!ELEMENT day (task+)>
+<!ATTLIST day name CDATA #REQUIRED>
+<!ELEMENT task (subject, topic, time, priority)>
+<!ELEMENT subject (#PCDATA)>
+<!ELEMENT topic (#PCDATA)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT priority (#PCDATA)>

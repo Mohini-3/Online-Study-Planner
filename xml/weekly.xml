@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE weeklyStudyPlan SYSTEM "weeklyStudyPlan.dtd">
+<weeklyStudyPlan>
+
+    <day name="Monday">
+        <task>
+            <subject>Mathematics</subject>
+            <topic>Algebra</topic>
+            <time>6:00 PM – 7:00 PM</time>
+            <priority>High</priority>
+        </task>
+        <task>
+            <subject>Science</subject>
+            <topic>Physics Basics</topic>
+            <time>7:15 PM – 8:00 PM</time>
+            <priority>Medium</priority>
+        </task>
+    </day>
+
+    <day name="Tuesday">
+        <task>
+            <subject>English</subject>
+            <topic>Grammar</topic>
+            <time>5:00 PM – 6:00 PM</time>
+            <priority>Medium</priority>
+        </task>
+        <task>
+            <subject>Computer Science</subject>
+            <topic>Java Basics</topic>
+            <time>6:15 PM – 7:15 PM</time>
+            <priority>High</priority>
+        </task>
+    </day>
+
+    <day name="Wednesday">
+        <task>
+            <subject>Mathematics</subject>
+            <topic>Geometry</topic>
+            <time>4:00 PM – 5:00 PM</time>
+            <priority>Medium</priority>
+        </task>
+        <task>
+            <subject>Science</subject>
+            <topic>Chemistry</topic>
+            <time>5:15 PM – 6:15 PM</time>
+            <priority>High</priority>
+        </task>
+    </day>
+
+    <day name="Thursday">
+        <task>
+            <subject>English</subject>
+            <topic>Essay Writing</topic>
+            <time>6:00 PM – 7:00 PM</time>
+            <priority>Low</priority>
+        </task>
+        <task>
+            <subject>Computer Science</subject>
+            <topic>Loops &amp; Conditions</topic>
+            <time>7:15 PM – 8:15 PM</time>
+            <priority>High</priority>
+        </task>
+    </day>
+
+    <day name="Friday">
+        <task>
+            <subject>Mathematics</subject>
+            <topic>Revision</topic>
+            <time>5:00 PM – 6:00 PM</time>
+            <priority>High</priority>
+        </task>
+        <task>
+            <subject>Science</subject>
+            <topic>Biology</topic>
+            <time>6:15 PM – 7:15 PM</time>
+            <priority>Medium</priority>
+        </task>
+    </day>
+
+    <day name="Saturday">
+        <task>
+            <subject>Computer Science</subject>
+            <topic>Programming Practice</topic>
+            <time>10:00 AM – 12:00 PM</time>
+            <priority>High</priority>
+        </task>
+        <task>
+            <subject>English</subject>
+            <topic>Reading</topic>
+            <time>4:00 PM – 5:00 PM</time>
+            <priority>Low</priority>
+        </task>
+    </day>
+
+    <day name="Sunday">
+        <task>
+            <subject>All Subjects</subject>
+            <topic>Weekly Revision</topic>
+            <time>9:00 AM – 11:00 AM</time>
+            <priority>High</priority>
+        </task>
+        <task>
+            <subject>Self Study</subject>
+            <topic>Weak Areas</topic>
+            <time>5:00 PM – 6:00 PM</time>
+            <priority>Medium</priority>
+        </task>
+    </day>
+
+</weeklyStudyPlan>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Exam Tracker</title>
+
+<style>
+body{
+    background:#f3f0ff;
+    font-family: Arial;
+    text-align:center;
+}
+
+table{
+    margin:auto;
+    width:80%;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid #555;
+    padding:10px;
+}
+
+img{
+    width:600px;   /* IMPORTANT for image map */
+    margin-top:20px;
+    border:2px solid #333;
+    cursor:pointer;
+}
+
+#info{
+    margin-top:20px;
+    font-size:18px;
+    color:darkblue;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Upcoming & Completed Exams</h2>
+
+<table>
+<tr>
+<th>Exam Name</th>
+<th>Subject</th>
+<th>Date</th>
+<th>Syllabus</th>
+<th>Status</th>
+<th>Result</th>
+</tr>
+<tr>
+<td>Mid Term Exam</td>
+<td>Mathematics</td>
+<td>20-Mar-2025</td>
+<td>Yes</td>
+<td>Prepared</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td>Unit Test</td>
+<td>Science</td>
+<td>25-Mar-2025</td>
+<td>No</td>
+<td>Not Prepared</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td>Model Exam</td>
+<td>English</td>
+<td>10-Feb-2025</td>
+<td>Yes</td>
+<td>Prepared</td>
+<td>Passed</td>
+</tr>
+</table>
+
+<!-- Calendar Image -->
+<img src="f2656d01-d48a-4eae-bdb0-2eac6d6a8ad4.png"
+     usemap="#examMap"
+     alt="Exam Calendar">
+
+<map name="examMap">
+
+<!-- Mid Term -->
+<area shape="rect" coords="40,40,160,140"
+onclick="showExam('Mid Term Exam','Mathematics','20-Mar-2025','Yes','Prepared','Pending'); return false;">
+
+<!-- Unit Test -->
+<area shape="rect" coords="220,40,340,140"
+onclick="showExam('Unit Test','Science','25-Mar-2025','No','Not Prepared','Pending'); return false;">
+
+<!-- Model Exam -->
+<area shape="rect" coords="400,40,520,140"
+onclick="showExam('Model Exam','English','10-Feb-2025','Yes','Prepared','Passed'); return false;">
+
+</map>
+
+<div id="info">
+Click on an exam in the calendar to see details here.
+</div>
+
+<script>
+function showExam(name, subject, date, syllabus, status, result){
+    document.getElementById("info").innerHTML =
+    `<b>Exam:</b> ${name}<br>
+     <b>Subject:</b> ${subject}<br>
+     <b>Date:</b> ${date}<br>
+     <b>Syllabus Covered:</b> ${syllabus}<br>
+     <b>Preparation:</b> ${status}<br>
+     <b>Result:</b> ${result}`;
+}
+</script>
+
+</body>
+</html>
