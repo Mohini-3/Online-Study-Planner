@@ -4,49 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Today's Tasks</title>
-
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/content.css">
-    <link rel="stylesheet" href="css/tables.css">
-
-    <script>
-        function showDateTime() {
-            var now = new Date();
-            document.getElementById("datetime").innerHTML = now;
-        }
-    </script>
+    <link rel="stylesheet" href="../css/tasks.css">
 </head>
 
-<body onload="showDateTime()">
+<body>
 
-    <h1>TODAY'S TASKS</h1>
-
-    <p id="datetime" style="font-weight:bold;"></p>
-
-    <div class="table-container">
-        <table>
-            <tr>
-                <th>Task</th>
-                <th>Subject</th>
-                <th>Status</th>
-            </tr>
-            <tr>
-                <td>Solve Algebra Problems</td>
-                <td>Math</td>
-                <td><span class="pending">Pending</span></td>
-            </tr>
-            <tr>
-                <td>Read Chapter 2</td>
-                <td>Science</td>
-                <td><span class="completed">Completed</span></td>
-            </tr>
-            <tr>
-                <td>Write Essay</td>
-                <td>English</td>
-                <td><span class="pending">Pending</span></td>
-            </tr>
-        </table>
+<div class="tasks-container">
+    <div class="tasks-header">
+        <div>
+            <h1>Today's Tasks</h1>
+            <p id="datetime"></p>
+        </div>
+        <button class="btn-add" onclick="openAddTaskModal()">
+            <span class="btn-icon">+</span>
+            Add Task
+        </button>
     </div>
+
+    <div class="table-wrapper">
+        <table class="tasks-table">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Subject</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tasksTableBody">
+                <!-- Tasks will be dynamically loaded here -->
+            </tbody>
+        </table>
+        
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">📝</div>
+            <h3>No tasks for today</h3>
+            <p>Click "Add Task" to create your first task</p>
+        </div>
+    </div>
+</div>
+
+<!-- Add Task Modal -->
+<div id="addTaskModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add New Task</h2>
+            <span class="close" onclick="closeAddTaskModal()">&times;</span>
+        </div>
+        <form id="addTaskForm" onsubmit="addTask(event)">
+            <div class="form-group">
+                <label>Task Name</label>
+                <input type="text" id="taskName" required placeholder="e.g., Complete homework">
+            </div>
+            <div class="form-group">
+                <label>Subject</label>
+                <input type="text" id="taskSubject" required placeholder="e.g., Mathematics">
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAddTaskModal()">Cancel</button>
+                <button type="submit" class="btn-submit">Add Task</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../js/tasks.js"></script>
 
 </body>
 </html>

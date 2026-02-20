@@ -8,33 +8,6 @@
 <link rel="stylesheet" href="css/content.css">
 <link rel="stylesheet" href="css/lists.css">
 
-<script>
-function changeBgColor() {
-    const container = document.getElementById("container");
-    const colors = [
-        'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-        'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-        'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-        'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
-    ];
-    
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    container.style.background = randomColor;
-    
-    // Add a success message
-    const button = document.querySelector('.btn-primary');
-    const originalText = button.innerHTML;
-    button.innerHTML = '✨ Amazing Choice!';
-    button.style.transform = 'scale(1.1)';
-    
-    setTimeout(() => {
-        button.innerHTML = originalText;
-        button.style.transform = 'scale(1)';
-    }, 2000);
-}
-</script>
-
 </head>
 
 <body>
@@ -47,44 +20,38 @@ function changeBgColor() {
     
     <div class="tips-grid">
         <div class="tip-card">
-            <div class="tip-icon">📅</div>
             <h3>Create a Schedule</h3>
             <p>Make a clear, realistic study schedule that fits your lifestyle and stick to it consistently.</p>
         </div>
         
         <div class="tip-card">
-            <div class="tip-icon">⏰</div>
             <h3>Take Regular Breaks</h3>
             <p>Use the Pomodoro technique: study for 25-45 minutes, then take 5-15 minute breaks to maintain focus.</p>
         </div>
         
         <div class="tip-card">
-            <div class="tip-icon">🔄</div>
             <h3>Daily Revision</h3>
             <p>Review material daily for better memory retention. Consistent revision beats cramming every time.</p>
         </div>
         
         <div class="tip-card">
-            <div class="tip-icon">📄</div>
             <h3>Practice Past Papers</h3>
             <p>Solve previous year exam papers to understand patterns, improve time management, and boost confidence.</p>
         </div>
         
         <div class="tip-card">
-            <div class="tip-icon">🎯</div>
             <h3>Minimize Distractions</h3>
             <p>Create a dedicated, organized study space free from social media, noise, and other distractions.</p>
         </div>
         
         <div class="tip-card">
-            <div class="tip-icon">🧠</div>
             <h3>Active Learning</h3>
             <p>Engage with material through summarizing, teaching others, making flashcards, and asking questions.</p>
         </div>
     </div>
     
     <div class="pro-tips">
-        <h2>Pro Tips for Success</h2>
+        <h2>Advanced Study Techniques</h2>
         <div class="pro-tip-list">
             <div class="pro-tip">
                 <span class="tip-number">01</span>
@@ -109,61 +76,92 @@ function changeBgColor() {
             </div>
         </div>
     </div>
-    
-    <div class="cta-section">
-        <button class="btn-primary" onclick="changeBgColor()">Unlock Your Potential</button>
-    </div>
 </div>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
 .tips-container {
     min-height: 100vh;
-    padding: 40px 20px;
-    transition: background-color 0.5s ease;
+    padding: 32px 24px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #faf5ff 100%);
 }
 
 .tips-hero {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 48px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 40px 32px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.tips-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
 }
 
 .tips-hero h1 {
-    font-size: 3rem;
-    font-weight: 900;
-    color: #111827;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #1e293b;
     margin-bottom: 16px;
-    background: linear-gradient(135deg, #6366f1, #10b981);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
 .tips-hero p {
-    font-size: 1.2rem;
-    color: #6b7280;
-    max-width: 600px;
+    font-size: 1.1rem;
+    color: #64748b;
+    max-width: 650px;
     margin: 0 auto;
+    line-height: 1.6;
 }
 
 .tips-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 24px;
-    margin-bottom: 60px;
+    margin-bottom: 48px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .tip-card {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 32px 24px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid #f1f5f9;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: left;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(241, 245, 249, 0.8);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 .tip-card::before {
@@ -173,137 +171,149 @@ function changeBgColor() {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #6366f1, #10b981);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
 }
 
 .tip-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.tip-card:hover::before {
-    transform: scaleX(1);
-}
-
-.tip-icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    display: block;
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    border-color: rgba(99, 102, 241, 0.2);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .tip-card h3 {
-    color: #111827;
-    font-size: 1.4rem;
-    margin-bottom: 16px;
+    color: #1e293b;
+    font-size: 1.15rem;
+    margin-bottom: 12px;
     font-weight: 700;
+    margin-top: 4px;
 }
 
 .tip-card p {
-    color: #6b7280;
+    color: #64748b;
     line-height: 1.6;
     margin: 0;
+    font-size: 0.95rem;
 }
 
 .pro-tips {
-    max-width: 800px;
-    margin: 0 auto 60px;
+    max-width: 900px;
+    margin: 0 auto 40px;
 }
 
 .pro-tips h2 {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 800;
-    color: #111827;
-    margin-bottom: 40px;
+    color: #1e293b;
+    margin-bottom: 36px;
+    letter-spacing: -0.02em;
 }
 
 .pro-tip-list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
 }
 
 .pro-tip {
     display: flex;
-    align-items: center;
-    background: #ffffff;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 16px;
     padding: 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f1f5f9;
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(241, 245, 249, 0.8);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.pro-tip::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #06b6d4, #10b981);
 }
 
 .pro-tip:hover {
-    transform: translateX(8px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateX(6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    border-color: rgba(6, 182, 212, 0.2);
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .tip-number {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    background: linear-gradient(135deg, #06b6d4, #10b981);
     color: #ffffff;
     width: 48px;
     height: 48px;
-    border-radius: 50%;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1.1rem;
     margin-right: 20px;
     flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);
 }
 
 .tip-content h4 {
-    color: #111827;
+    color: #1e293b;
     margin-bottom: 8px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
 }
 
 .tip-content p {
-    color: #6b7280;
+    color: #64748b;
     margin: 0;
-    line-height: 1.5;
-}
-
-.cta-section {
-    text-align: center;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
-    color: #ffffff;
-    padding: 16px 40px;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(245, 158, 11, 0.6);
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 @media (max-width: 768px) {
+    .tips-container {
+        padding: 24px 16px;
+    }
+    
+    .tips-hero {
+        padding: 32px 24px;
+    }
+    
     .tips-hero h1 {
-        font-size: 2.2rem;
+        font-size: 1.85rem;
+    }
+    
+    .tips-hero p {
+        font-size: 1rem;
+    }
+    
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .pro-tips h2 {
+        font-size: 1.75rem;
     }
     
     .pro-tip {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 20px;
     }
     
     .tip-number {
-        margin-right: 0;
-        margin-bottom: 16px;
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+        margin-right: 16px;
     }
 }
 </style>

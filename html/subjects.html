@@ -3,39 +3,68 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Subjects Catalogue</title>
-<link rel="stylesheet" href="css/global.css">
-<link rel="stylesheet" href="css/content.css">
+<link rel="stylesheet" href="../css/subjects.css">
 </head>
 
 <body>
 
-<h2>Subjects Overview</h2>
+<div class="subjects-container">
+    <div class="subjects-header">
+        <div>
+            <h1>Subjects Overview</h1>
+            <p>Manage your academic subjects and track your progress</p>
+        </div>
+        <button class="btn-add" onclick="openAddModal()">
+            <span class="btn-icon">+</span>
+            Add Subject
+        </button>
+    </div>
 
-<table border="0" width="75%" cellpadding="10" cellspacing="10">
+    <div id="subjectsGrid" class="subjects-grid">
+        <!-- Subjects will be dynamically loaded here -->
+    </div>
+    
+    <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon">📚</div>
+        <h3>No subjects yet</h3>
+        <p>Click "Add Subject" to start organizing your studies</p>
+    </div>
+</div>
 
-<tr class="subject-box">
-<td>
-    <!-- Original image -->
-    <img id="mathImg" src="../public/math.png" width="120" height="120" alt="Mathematics">
-</td>
-<td align="center"><b>Mathematics</b><br>Difficulty: Medium</td>
-<td align="center">
-    <a href="https://www.khanacademy.org/math" target="_blank">More Details</a>
-</td>
-</tr>
+<!-- Add Subject Modal -->
+<div id="addModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add New Subject</h2>
+            <span class="close" onclick="closeAddModal()">&times;</span>
+        </div>
+        <form id="addSubjectForm" onsubmit="addSubject(event)">
+            <div class="form-group">
+                <label>Subject Name</label>
+                <input type="text" id="subjectName" required placeholder="e.g., Mathematics">
+            </div>
+            <div class="form-group">
+                <label>Difficulty Level</label>
+                <select id="subjectDifficulty" required>
+                    <option value="">Select difficulty</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Resource Link (optional)</label>
+                <input type="url" id="subjectLink" placeholder="https://example.com">
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAddModal()">Cancel</button>
+                <button type="submit" class="btn-submit">Add Subject</button>
+            </div>
+        </form>
+    </div>
+</div>
 
-<tr class="subject-box">
-<td>
-    <!-- Original image -->
-    <img id="scienceImg" src="../public/science.png" width="120" height="120" alt="Science">
-</td>
-<td align="center"><b>Science</b><br>Difficulty: Medium</td>
-<td align="center">
-    <a href="https://www.khanacademy.org/science" target="_blank">More Details</a>
-</td>
-</tr>
-
-</table>
+<script src="../js/subjects.js"></script>
 
 </body>
 </html>
