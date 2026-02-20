@@ -1,117 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Exam Tracker</title>
-
-<style>
-body{
-    background:#f3f0ff;
-    font-family: Arial;
-    text-align:center;
-}
-
-table{
-    margin:auto;
-    width:80%;
-    border-collapse:collapse;
-}
-
-th,td{
-    border:1px solid #555;
-    padding:10px;
-}
-
-img{
-    width:600px;   /* IMPORTANT for image map */
-    margin-top:20px;
-    border:2px solid #333;
-    cursor:pointer;
-}
-
-#info{
-    margin-top:20px;
-    font-size:18px;
-    color:darkblue;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Tracker</title>
+    <link rel="stylesheet" href="../css/exams.css">
 </head>
-
 <body>
 
-<h2>Upcoming & Completed Exams</h2>
+<div class="exams-container">
+    <div class="exams-header">
+        <div>
+            <h1>Exam Tracker</h1>
+            <p>Track your upcoming and completed exams</p>
+        </div>
+        <button class="btn-add-exam" onclick="openAddExamModal()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Exam
+        </button>
+    </div>
 
-<table>
-<tr>
-<th>Exam Name</th>
-<th>Subject</th>
-<th>Date</th>
-<th>Syllabus</th>
-<th>Status</th>
-<th>Result</th>
-</tr>
-<tr>
-<td>Mid Term Exam</td>
-<td>Mathematics</td>
-<td>20-Mar-2025</td>
-<td>Yes</td>
-<td>Prepared</td>
-<td>Pending</td>
-</tr>
-<tr>
-<td>Unit Test</td>
-<td>Science</td>
-<td>25-Mar-2025</td>
-<td>No</td>
-<td>Not Prepared</td>
-<td>Pending</td>
-</tr>
-<tr>
-<td>Model Exam</td>
-<td>English</td>
-<td>10-Feb-2025</td>
-<td>Yes</td>
-<td>Prepared</td>
-<td>Passed</td>
-</tr>
-</table>
+    <div class="filter-tabs">
+        <button class="filter-tab active" onclick="filterExams('all')">All Exams</button>
+        <button class="filter-tab" onclick="filterExams('upcoming')">Upcoming</button>
+        <button class="filter-tab" onclick="filterExams('completed')">Completed</button>
+    </div>
 
-<!-- Calendar Image -->
-<img src="f2656d01-d48a-4eae-bdb0-2eac6d6a8ad4.png"
-     usemap="#examMap"
-     alt="Exam Calendar">
-
-<map name="examMap">
-
-<!-- Mid Term -->
-<area shape="rect" coords="40,40,160,140"
-onclick="showExam('Mid Term Exam','Mathematics','20-Mar-2025','Yes','Prepared','Pending'); return false;">
-
-<!-- Unit Test -->
-<area shape="rect" coords="220,40,340,140"
-onclick="showExam('Unit Test','Science','25-Mar-2025','No','Not Prepared','Pending'); return false;">
-
-<!-- Model Exam -->
-<area shape="rect" coords="400,40,520,140"
-onclick="showExam('Model Exam','English','10-Feb-2025','Yes','Prepared','Passed'); return false;">
-
-</map>
-
-<div id="info">
-Click on an exam in the calendar to see details here.
+    <div class="table-wrapper">
+        <table class="exams-table">
+            <thead>
+                <tr>
+                    <th>Exam Name</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                    <th>Countdown</th>
+                    <th>Status</th>
+                    <th>Result</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="examsTableBody">
+                <!-- Exams will be dynamically loaded here -->
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<script>
-function showExam(name, subject, date, syllabus, status, result){
-    document.getElementById("info").innerHTML =
-    `<b>Exam:</b> ${name}<br>
-     <b>Subject:</b> ${subject}<br>
-     <b>Date:</b> ${date}<br>
-     <b>Syllabus Covered:</b> ${syllabus}<br>
-     <b>Preparation:</b> ${status}<br>
-     <b>Result:</b> ${result}`;
-}
-</script>
+<!-- Add/Edit Exam Modal -->
+<div id="examModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Add Exam</h2>
+            <span class="close" onclick="closeExamModal()">&times;</span>
+        </div>
+        <form id="examForm" onsubmit="saveExam(event)">
+            <input type="hidden" id="editExamId" value="">
+            
+            <div class="form-group">
+                <label>Exam Name</label>
+                <input type="text" id="examName" required placeholder="e.g., Mid Term Exam">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" id="examSubject" required placeholder="e.g., Mathematics">
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="examDate" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="examStatus" required>
+                        <option value="Not Started">Not Started</option>
+                        <option value="Preparing" selected>Preparing</option>
+                        <option value="Ready">Ready</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Result</label>
+                    <select id="examResult" required>
+                        <option value="Pending" selected>Pending</option>
+                        <option value="Passed">Passed</option>
+                        <option value="Failed">Failed</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Notes (Optional)</label>
+                <textarea id="examNotes" rows="3" placeholder="Add any notes or syllabus details..."></textarea>
+            </div>
+            
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeExamModal()">Cancel</button>
+                <button type="submit" class="btn-submit">Save Exam</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../js/exams.js"></script>
 
 </body>
 </html>
