@@ -12,13 +12,13 @@ function initializeWeeklyPlan() {
     if (!existingSessions) {
         const defaultSessions = {
             'Monday': [
-                { subject: 'Mathematics', startTime: '18:00', endTime: '19:00' }
+                { subject: 'Mathematics', startTime: '18:00', endTime: '19:00', status: 'planned' }
             ],
             'Tuesday': [
-                { subject: 'Science', startTime: '17:00', endTime: '18:00' }
+                { subject: 'Science', startTime: '17:00', endTime: '18:00', status: 'planned' }
             ],
             'Wednesday': [
-                { subject: 'English', startTime: '16:00', endTime: '17:00' }
+                { subject: 'English', startTime: '16:00', endTime: '17:00', status: 'planned' }
             ]
         };
         localStorage.setItem('weeklySessions', JSON.stringify(defaultSessions));
@@ -100,12 +100,27 @@ function displayWeeklyPlan() {
                 row.className = 'session-row';
                 
                 const timeStr = formatTime(session.startTime) + ' - ' + formatTime(session.endTime);
+                const status = session.status || 'planned';
+                
+                // Status icon based on current status
+                let statusIcon = '';
+                if (status === 'completed') {
+                    statusIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+                } else if (status === 'in-progress') {
+                    statusIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>';
+                } else {
+                    statusIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>';
+                }
                 
                 row.innerHTML = `
                     <td><span class="day-badge">${day}</span></td>
                     <td><span class="subject-name">${session.subject}</span></td>
                     <td><span class="time-display">${timeStr}</span></td>
                     <td>
+                        <button class="status-badge status-${status}" onclick="toggleSessionStatus('${day}', ${index})" title="Click to change status">
+                            ${statusIcon}
+                            ${status.charAt(0).toUpperCase() + status.slice(1).replace('-', ' ')}
+                        </button>
                         <button class="btn-edit" onclick="editSession('${day}', ${index})">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -205,6 +220,9 @@ function editSession(day, index) {
     document.getElementById('editDay').value = day;
     document.getElementById('editIndex').value = index;
     
+    // Store original status to preserve it
+    document.getElementById('sessionForm').dataset.originalStatus = session.status || 'planned';
+    
     modalTitle.textContent = 'Edit Study Session';
     modal.style.display = 'block';
 }
@@ -231,9 +249,12 @@ function saveSession(event) {
     }
     
     const sessions = getSessions();
+    const form = document.getElementById('sessionForm');
+    let status = 'planned';
     
-    // If editing
+    // If editing, preserve the original status
     if (editDay && editIndex !== '') {
+        status = form.dataset.originalStatus || 'planned';
         const index = parseInt(editIndex);
         // Remove from old day if day changed
         if (editDay !== day) {
@@ -254,7 +275,8 @@ function saveSession(event) {
     sessions[day].push({
         subject: subject,
         startTime: startTime,
-        endTime: endTime
+        endTime: endTime,
+        status: status
     });
     
     // Sort sessions by start time
@@ -264,6 +286,26 @@ function saveSession(event) {
     displayWeeklyPlan();
     closeSessionModal();
     showNotification(editDay && editIndex !== '' ? 'Session updated!' : 'Session added!');
+}
+
+function toggleSessionStatus(day, index) {
+    const sessions = getSessions();
+    const session = sessions[day][index];
+    
+    // Cycle through statuses: planned → in-progress → completed → planned
+    if (session.status === 'planned' || !session.status) {
+        session.status = 'in-progress';
+    } else if (session.status === 'in-progress') {
+        session.status = 'completed';
+    } else {
+        session.status = 'planned';
+    }
+    
+    saveSessions(sessions);
+    displayWeeklyPlan();
+    
+    const statusText = session.status.replace('-', ' ');
+    showNotification(`Session marked as ${statusText}!`);
 }
 
 function deleteSession(day, index) {
