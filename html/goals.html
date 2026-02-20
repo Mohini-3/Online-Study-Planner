@@ -1,41 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Study Goals</title>
-<link rel="stylesheet" href="css/global.css">
-<link rel="stylesheet" href="css/content.css">
-<link rel="stylesheet" href="css/tables.css">
-<style>
-#goalsTable th,#goalsTable td{text-align:center;padding:8px}
-#inputRow input,#inputRow select{padding:5px;margin-right:5px}
-#inputRow button{padding:5px 10px;cursor:pointer}
-</style>
-<script>
-function addGoal(){var g=n=>document.getElementById(n).value,
-t=g("goalTitle"),s=g("goalSubject"),d=g("goalDate"),
-p=g("goalProgress"),pr=g("goalPriority"),st=g("goalStatus");
-if(!t||!s)return alert("Please enter Goal Title and Subject.");
-d&&(d=new Date(d).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}).replace(/ /g,'-'));
-p&&!p.includes('%')&&(p+='%');
-var r=document.getElementById("goalsTable").insertRow(-1);
-r.align="center";
-[t,s,d,p,pr,st].forEach((v,i)=>r.insertCell(i).innerHTML=v);
-["goalTitle","goalSubject","goalDate","goalProgress"].forEach(n=>document.getElementById(n).value="");
-document.getElementById("goalPriority").value="Medium";
-document.getElementById("goalStatus").value="In Progress"}
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Goals</title>
+    <link rel="stylesheet" href="../css/goals.css">
 </head>
 <body>
-<h2 align="center">My Study Goals</h2>
-<div align="center" id="inputRow" style="margin-bottom:20px"><input type="text" id="goalTitle" placeholder="Goal Title"><input type="text" id="goalSubject" placeholder="Subject"><input type="date" id="goalDate" placeholder="Target Date"><input type="text" id="goalProgress" placeholder="Progress"><select id="goalPriority"><option value="High">High</option><option value="Medium" selected>Medium</option><option value="Low">Low</option></select><select id="goalStatus"><option value="In Progress" selected>In Progress</option><option value="Completed">Completed</option></select><button onclick="addGoal()">Add Goal</button></div>
-<table align="center" border="1" width="80%" cellpadding="10" cellspacing="5" id="goalsTable">
-<tr><th>Goal Title</th><th>Subject</th><th>Target Date</th><th>Progress</th><th>Priority</th><th>Status</th></tr>
-<tr><td>Complete Algebra</td><td>Math</td><td>20-Mar-2025</td><td>70%</td><td>High</td><td>In Progress</td></tr>
-<tr><td>Revise Physics Unit-1</td><td>Physics</td><td>25-Mar-2025</td><td>100%</td><td>Medium</td><td>Completed</td></tr>
-<tr><td>Learn HTML Basics</td><td>Computer</td><td>30-Mar-2025</td><td>40%</td><td>Low</td><td>In Progress</td></tr>
-<tr><td>HTML Web Practice</td><td>Web</td><td>03-Feb-2026</td><td>80%</td><td>Medium</td><td>Completed</td></tr>
-</table>
+
+<div class="goals-container">
+    <div class="goals-header">
+        <div>
+            <h1>My Study Goals</h1>
+            <p>Track your academic goals and progress</p>
+        </div>
+        <button class="btn-add-goal" onclick="openAddGoalModal()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Goal
+        </button>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="goals-table">
+            <thead>
+                <tr>
+                    <th>Goal Title</th>
+                    <th>Subject</th>
+                    <th>Target Date</th>
+                    <th>Progress</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="goalsTableBody">
+                <!-- Goals will be dynamically loaded here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add/Edit Goal Modal -->
+<div id="goalModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Add Study Goal</h2>
+            <span class="close" onclick="closeGoalModal()">&times;</span>
+        </div>
+        <form id="goalForm" onsubmit="saveGoal(event)">
+            <input type="hidden" id="editGoalId" value="">
+            
+            <div class="form-group">
+                <label>Goal Title</label>
+                <input type="text" id="goalTitle" required placeholder="e.g., Complete Algebra">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" id="goalSubject" required placeholder="e.g., Mathematics">
+                </div>
+                <div class="form-group">
+                    <label>Target Date</label>
+                    <input type="date" id="goalDate" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Progress (%)</label>
+                    <input type="number" id="goalProgress" min="0" max="100" required placeholder="0-100">
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select id="goalPriority" required>
+                        <option value="High">High</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Status</label>
+                <select id="goalStatus" required>
+                    <option value="In Progress" selected>In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
+            
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeGoalModal()">Cancel</button>
+                <button type="submit" class="btn-submit">Save Goal</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../js/goals.js"></script>
+
 </body>
 </html>
